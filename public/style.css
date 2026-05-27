@@ -204,6 +204,27 @@ header h1 {
 .footer {
   text-align: center;
   margin-top: 2.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.progress-btn {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #0071e3;
+  background: none;
+  border: 1px solid #0071e3;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.progress-btn:hover {
+  background: #0071e3;
+  color: #ffffff;
 }
 
 .reset-btn {
@@ -222,6 +243,185 @@ header h1 {
 .reset-btn:hover {
   color: #ff453a;
   border-color: #ff453a;
+}
+
+/* Progress modal */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 1rem;
+  animation: fadeIn 0.15s ease;
+}
+
+.modal-overlay.hidden {
+  display: none;
+}
+
+.modal {
+  background: #ffffff;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 520px;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem 0.75rem;
+  border-bottom: 1px solid #f2f2f7;
+}
+
+.modal-header h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #1d1d1f;
+}
+
+.modal-close {
+  font-size: 1.5rem;
+  line-height: 1;
+  color: #86868b;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem;
+}
+
+.modal-close:hover {
+  color: #1d1d1f;
+}
+
+.modal-filters {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  overflow-x: auto;
+}
+
+.filter-btn {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #636366;
+  background: #f2f2f7;
+  border: none;
+  border-radius: 100px;
+  padding: 0.35rem 0.85rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.filter-btn:hover {
+  background: #e5e5ea;
+}
+
+.filter-btn.active {
+  background: #0071e3;
+  color: #ffffff;
+}
+
+.modal-body {
+  overflow-y: auto;
+  padding: 0.5rem 1.5rem 1.25rem;
+  flex: 1;
+}
+
+.progress-empty {
+  text-align: center;
+  color: #86868b;
+  padding: 2rem 0;
+  font-size: 0.95rem;
+}
+
+.progress-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid #f2f2f7;
+  gap: 1rem;
+}
+
+.progress-row:last-child {
+  border-bottom: none;
+}
+
+.progress-word {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.progress-italian {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1d1d1f;
+}
+
+.progress-english {
+  font-size: 0.8rem;
+  color: #86868b;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.progress-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  flex-shrink: 0;
+}
+
+.progress-score {
+  font-size: 0.75rem;
+  color: #86868b;
+  margin-bottom: 0.3rem;
+}
+
+.progress-boxes {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.box-tag {
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 0.15rem 0.5rem;
+  border-radius: 100px;
+  white-space: nowrap;
+}
+
+.box-new {
+  background: #f2f2f7;
+  color: #86868b;
+}
+
+.box-weak {
+  background: #fff0f0;
+  color: #d70015;
+}
+
+.box-ok {
+  background: #fff8e6;
+  color: #a05a00;
+}
+
+.box-good {
+  background: #edf9ee;
+  color: #248a3d;
 }
 
 @keyframes fadeIn {
@@ -278,5 +478,24 @@ header h1 {
 
   #submit-btn {
     width: 100%;
+  }
+
+  .modal {
+    max-height: 90vh;
+  }
+
+  .progress-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+  }
+
+  .progress-meta {
+    align-items: flex-start;
+  }
+
+  .footer {
+    flex-direction: column;
+    align-items: center;
   }
 }
