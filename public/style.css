@@ -201,6 +201,29 @@ header h1 {
   color: #aeaeb2;
 }
 
+.footer {
+  text-align: center;
+  margin-top: 2.5rem;
+}
+
+.reset-btn {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #86868b;
+  background: none;
+  border: 1px solid #d2d2d7;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.reset-btn:hover {
+  color: #ff453a;
+  border-color: #ff453a;
+}
+
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(4px); }
   to { opacity: 1; transform: translateY(0); }
