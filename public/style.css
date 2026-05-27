@@ -393,7 +393,9 @@ header h1 {
 
 .progress-boxes {
   display: flex;
-  gap: 0.4rem;
+  flex-direction: column;
+  gap: 0.25rem;
+  align-items: flex-end;
 }
 
 .box-tag {
