@@ -267,16 +267,18 @@
       var sIt = stats[keyIt] || null;
       var sEn = stats[keyEn] || null;
 
-      // Best box across both directions (for categorisation)
-      var bestBox = Math.max(sIt ? sIt.box : 0, sEn ? sEn.box : 0);
-      var worstBox = 0;
-      if (sIt && sEn) worstBox = Math.min(sIt.box, sEn.box);
-      else if (sIt) worstBox = sIt.box;
-      else if (sEn) worstBox = sEn.box;
-
       var totalCorrect = (sIt ? sIt.correct : 0) + (sEn ? sEn.correct : 0);
       var totalWrong = (sIt ? sIt.wrong : 0) + (sEn ? sEn.wrong : 0);
-      var seen = sIt || sEn;
+      var seen = totalCorrect > 0 || totalWrong > 0;
+
+      // Box levels only from directions actually answered
+      var itUsed = sIt && (sIt.correct > 0 || sIt.wrong > 0);
+      var enUsed = sEn && (sEn.correct > 0 || sEn.wrong > 0);
+      var bestBox = Math.max(itUsed ? sIt.box : 0, enUsed ? sEn.box : 0);
+      var worstBox = 0;
+      if (itUsed && enUsed) worstBox = Math.min(sIt.box, sEn.box);
+      else if (itUsed) worstBox = sIt.box;
+      else if (enUsed) worstBox = sEn.box;
 
       map[w.italian] = {
         italian: w.italian,
@@ -286,9 +288,9 @@
         worstBox: worstBox,
         correct: totalCorrect,
         wrong: totalWrong,
-        seen: !!seen,
-        itBox: sIt ? sIt.box : 0,
-        enBox: sEn ? sEn.box : 0
+        seen: seen,
+        itBox: itUsed ? sIt.box : 0,
+        enBox: enUsed ? sEn.box : 0
       };
     }
     return map;
